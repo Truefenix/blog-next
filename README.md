@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blog Next - Em Andamento
 
-## Getting Started
+Este é um projeto de blog desenvolvido com **Next.js**, utilizando **Styled Components** para estilização e suporte a **SSG (Static Site Generation)** para otimização de performance.
 
-First, run the development server:
+## 🔍 Funcionalidades
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Listagem de posts com título e slug.
+- Estilização com `styled-components` e tema global.
+- Estrutura moderna usando a pasta `app` do Next.js 13+.
+- Requisição de dados de uma API externa para preencher os posts.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠 Tecnologias Utilizadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Styled Components](https://styled-components.com/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Como rodar o projeto localmente
 
-## Learn More
+1. **Clone o repositório:**
 
-To learn more about Next.js, take a look at the following resources:
+    ```bash
+   git clone https://github.com/seu-usuario/blog-next.git
+   cd blog-next
+    ````
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Instale as dependências:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   npm install
+   # ou
+   yarn
+   ```
 
-## Deploy on Vercel
+3. **Inicie o servidor de desenvolvimento:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   npm run dev
+   # ou
+   yarn dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 4. Configurações e Instalações na Pasta:
+
+### [readme/README-DEV.md](readme/README-DEV.md)
+
+## 5. Acesse o app em:
+`http://localhost:3000`
+
+## 📄 Licença
+
+Este projeto está licenciado sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+
+## ✍️ Autor
+<table align="center">
+<tr>
+<td align="center">
+<a href="https://github.com/Truefenix">
+<img src="https://avatars.githubusercontent.com/u/94227038?s=400&u=0c061da14bb3c2f5bf9de8467443f49d7068c365&v=4" width="150px;" alt="Truefenix image" />
+<br />
+<sub><b>Eduardo-Roque</b></sub>
+</a>
+</td>
+</tr>
+</table>
+
+<h4 align="center">
+By<a href="https://github.com/Truefenix" target="_blank"> Truefenix </a>✍️
