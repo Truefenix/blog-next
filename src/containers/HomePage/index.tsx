@@ -1,5 +1,6 @@
 "use client";
 
+import { Header } from "@/components/Header";
 import { Container } from "./styles";
 import { PostData } from "@/domain/posts/post";
 
@@ -9,13 +10,16 @@ export type HomePageProps = {
 
 export default function HomePage({ posts }: HomePageProps) {
     return (
-        <Container>
-            Container
-            {posts.map((post) => (
-                <div key={post.slug}>
-                    <img alt={post.title} />
-                </div>
-            ))}
-        </Container>
+        <>
+            <Header />
+            <Container>
+                Container
+                {posts.map((post) => (
+                    <div key={post.slug}>
+                        <h2>${post.title}</h2>
+                    </div>
+                ))}
+            </Container>
+        </>
     );
 }

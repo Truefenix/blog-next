@@ -9,7 +9,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     return (
         <html lang="pt-BR">
             <body>
-                <h1>Layout</h1>
                 <ThemeProvider theme={theme}>
                     <GlobalStyles />
                     {children}
