@@ -1,74 +1,78 @@
-export type PostID = number;
+import { z } from 'zod';
 
-export type PostAuthor = {
-    id: PostID;
-    name: string;
-    created_by: number;
-    updated_by: number;
-    created_at: string;
-    updated_at: string;
-};
+export const PostCoverFormatSchema = z.object({
+    ext: z.string(),
+    url: z.string(),
+    hash: z.string(),
+    mime: z.string(),
+    name: z.string(),
+    path: z.null(),
+    size: z.number(),
+    width: z.number(),
+    height: z.number(),
+    provider_metadata: z.object({
+        public_id: z.string(),
+        resource_type: z.string(),
+    }),
+});
 
-export type PostCategory = {
-    id: PostID;
-    name: string;
-    created_by: number;
-    updated_by: number;
-    created_at: string;
-    updated_at: string;
-};
+export const PostCoverSchema = PostCoverFormatSchema.extend({
+    id: z.number(),
+    alternativeText: z.string(),
+    caption: z.string(),
+    previewUrl: z.null(),
+    provider: z.string(),
+    created_by: z.number(),
+    updated_by: z.number(),
+    created_at: z.string(),
+    updated_at: z.string(),
+    formats: z.object({
+        thumbnail: PostCoverFormatSchema,
+        small: PostCoverFormatSchema,
+        medium: PostCoverFormatSchema,
+        large: PostCoverFormatSchema,
+    }),
+});
 
-export type PostCreatedBy = {
-    id: PostID;
-    firstname: string;
-    lastname: string;
-    username: null;
-};
+export const PostAuthorSchema = z.object({
+    id: z.number(),
+    name: z.string(),
+    created_by: z.number(),
+    updated_by: z.number(),
+    created_at: z.string(),
+    updated_at: z.string(),
+});
 
-export type PostCoverFormat = {
-    ext: string;
-    url: string;
-    hash: string;
-    mime: string;
-    name: string;
-    path: null;
-    size: number;
-    width: number;
-    height: number;
-    provider_metadata: {
-        public_id: string;
-        resource_type: string;
-    };
-};
+export const PostCategorySchema = z.object({
+    id: z.number(),
+    name: z.string(),
+    created_by: z.number(),
+    updated_by: z.number(),
+    created_at: z.string(),
+    updated_at: z.string(),
+});
 
-export type PostCover = PostCoverFormat & {
-    id: PostID;
-    alternativeText: string;
-    caption: string;
-    previewUrl: null;
-    provider: string;
-    created_by: number;
-    updated_by: number;
-    created_at: string;
-    updated_at: string;
-    formats: {
-        thumbnail: PostCoverFormat;
-        small: PostCoverFormat;
-        medium: PostCoverFormat;
-        large: PostCoverFormat;
-    };
-};
+export const PostCreatedBySchema = z.object({
+    id: z.number(),
+    firstname: z.string(),
+    lastname: z.string(),
+    username: z.null(),
+});
 
-export type PostData = {
-    id: PostID;
-    title: string;
-    content: string;
-    slug: string;
-    author: PostAuthor;
-    category: PostCategory;
-    created_by: PostCreatedBy;
-    updated_by: PostCreatedBy;
-    created_at: string;
-    updated_at: string;
-    cover: PostCover;
-};
+export const PostDataSchema = z.object({
+    id: z.number(),
+    title: z.string(),
+    content: z.string(),
+    slug: z.string(),
+    author: PostAuthorSchema,
+    category: PostCategorySchema,
+    created_by: PostCreatedBySchema,
+    updated_by: PostCreatedBySchema,
+    created_at: z.string(),
+    updated_at: z.string(),
+    cover: PostCoverSchema,
+});
+
+export const PostsArraySchema = z.array(PostDataSchema);
+
+export type PostData = z.infer<typeof PostDataSchema>;

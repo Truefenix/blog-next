@@ -15,6 +15,7 @@ Este é um projeto de blog desenvolvido com **Next.js**, utilizando **Styled Com
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Styled Components](https://styled-components.com/)
+- [zod](https://zod.dev/?id=requirements)
 
 ## 🚀 Como rodar o projeto localmente
 
@@ -47,6 +48,28 @@ Este é um projeto de blog desenvolvido com **Next.js**, utilizando **Styled Com
 
 ## 5. Acesse o app em:
 `http://localhost:3000`
+
+## 6. 📦 Variáveis de Ambiente (.env.local)
+
+Para configurar URLs e chaves sensíveis no projeto, use um arquivo `.env.local` na **raiz do projeto**, **fora da pasta `src/`**.
+
+#### ✅ Exemplo de `.env.local`:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3000
+```
+
+> ⚠️ Toda variável que for usada no **frontend (client-side)** precisa começar com `NEXT_PUBLIC_`.
+
+---
+
+* Para acessar a variável no código:
+
+  ```tsx
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL as string;
+  ```
+---
+.<br>.<br>.
 
 ## 📄 Licença
 
