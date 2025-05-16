@@ -1,6 +1,10 @@
 import { PostData } from "@/domain/posts/post";
 
-export const fetchJson = async <T>(url: string): Promise<PostData[]> => {
+export type HomePageProps = {
+    posts: PostData[];
+}
+
+export const fetchJson = async <T>(url: string): Promise<HomePageProps> => {
     console.log("Chamando API em:", url);
 
     const rawData = await fetch(url, { next: { revalidate: 60 } });

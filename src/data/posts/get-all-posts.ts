@@ -8,7 +8,9 @@ export const getAllPosts = async (): Promise<PostData[]> => {
     return posts;
 };
 
-/*import { API_URL } from "@/config/app-config";
+/* versão antiga
+
+import { API_URL } from "@/config/app-config";
 import { PostsArraySchema, PostData } from "../../domain/posts/post";
 
 export const getAllPosts = async (): Promise<PostData[]> => {

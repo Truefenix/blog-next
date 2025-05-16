@@ -4,12 +4,12 @@ export async function GET() {
     const posts = [
         {
             "id": 1,
-            "title": "Título de Exemplo",
+            "title": "Title Title",
             "content": "Conteúdo do post aqui.",
-            "slug": "titulo-de-exemplo",
+            "slug": "slug slug",
             "author": {
                 "id": 1,
-                "name": "Autor Exemplo",
+                "name": "Truefenix",
                 "created_by": 1,
                 "updated_by": 1,
                 "created_at": "2025-05-16T10:00:00Z",
@@ -40,7 +40,7 @@ export async function GET() {
             "cover": {
                 "id": 1,
                 "ext": ".png",
-                "url": "/assets/image01.png", // troque aqui para o caminho real da imagem
+                "url": "/assets/machaado.png", // troque aqui para o caminho real da imagem
                 "hash": "imagehash",
                 "mime": "image/png",
                 "name": "image01.png",
