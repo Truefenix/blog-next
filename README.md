@@ -56,7 +56,9 @@ Para configurar URLs e chaves sensíveis no projeto, use um arquivo `.env.local`
 #### ✅ Exemplo de `.env.local`:
 
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:3000
+NEXT_PUBLIC_API_URL=http://localhost:3000/api/posts
+NEXT_PUBLIC_SITE_NAME='Truefenix'
+NEXT_PUBLIC_SITE_URL=''
 ```
 
 > ⚠️ Toda variável que for usada no **frontend (client-side)** precisa começar com `NEXT_PUBLIC_`.

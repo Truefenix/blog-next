@@ -4,7 +4,7 @@ export async function GET() {
     const posts = [
         {
             "id": 1,
-            "title": "Lorem Ipsum",
+            "title": "Primeiro",
             "content": "Conteúdo do post aqui.",
             "slug": "slug1",
             "author": {

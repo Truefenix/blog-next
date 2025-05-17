@@ -1,9 +1,10 @@
-import { API_URL } from "@/config/app-config";
+import { API_URL, POSTS_URL } from "@/config/app-config";
 import { PostData, PostsArraySchema } from "../../domain/posts/post";
 import { fetchJson } from "@/utils/fetch-json";
 
-export const getAllPosts = async (): Promise<PostData[]> => {
-    const jsonData = await fetchJson<PostData[]>(API_URL);
+export const getAllPosts = async (query = ''): Promise<PostData[]> => {
+    const url = `${POSTS_URL}?${query}`;
+    const jsonData = await fetchJson<PostData[]>(url);
     const posts = PostsArraySchema.parse(jsonData); // Valida e tipa com o zod
     return posts;
 };
