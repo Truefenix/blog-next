@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Container } from "./styles";
 import { PostData } from "@/domain/posts/post";
 import { MainContainer } from "@/components/MainContainer";
+import { PostCard } from "@/components/PostCard";
 
 export type HomePageProps = {
     posts: PostData[];
@@ -16,9 +17,11 @@ export default function HomePage({ posts }: HomePageProps) {
             <MainContainer>
                 <Container>
                     {posts.map((post) => (
-                        <div key={post.slug}>
-                            <h2>{post.title}</h2>
-                        </div>
+                        <PostCard key={post.id}
+                            cover={post.cover.formats.small.url}
+                            slug={post.slug}
+                            title={post.title}
+                        />
                     ))}
                 </Container>
             </MainContainer>
