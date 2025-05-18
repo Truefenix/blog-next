@@ -1,5 +1,6 @@
 import { getPost } from "@/data/posts/get-post";
 import { getAllPosts } from "@/data/posts/get-all-posts";
+import { countAllPosts } from "@/data/posts/count-all-posts";
 
 interface PostPageProps {
     params: {
@@ -8,8 +9,8 @@ interface PostPageProps {
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-    const postArray = await getPost(params.slug); // Aqui slug é string, tudo OK
-    const post = postArray[0];
+    const { slug } = await params;
+    const post = await getPostPageProps(slug);
 
     if (!post) {
         return <div>Post não encontrado</div>;
@@ -23,10 +24,19 @@ export default async function PostPage({ params }: PostPageProps) {
     );
 }
 
+// mapeia o post e gera o post.slug
 export async function generateStaticParams() {
-    const posts = await getAllPosts();
+    const numberOfPosts = await countAllPosts();
+    const posts = await getAllPosts(`_limit=${numberOfPosts}`);
 
     return posts.map((post: any) => ({
         slug: post.slug,
     }));
 }
+
+// pega o slug[0]
+export const getPostPageProps = async (slug: string) => {
+    const postArray = await getPost(slug);
+    const post = postArray[0];
+    return post;
+};
