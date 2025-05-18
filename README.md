@@ -16,6 +16,7 @@ Este é um projeto de blog desenvolvido com **Next.js**, utilizando **Styled Com
 - [TypeScript](https://www.typescriptlang.org/)
 - [Styled Components](https://styled-components.com/)
 - [zod](https://zod.dev/?id=requirements)
+- [remark](https://www.npmjs.com/package/remark)
 
 ## 🚀 Como rodar o projeto localmente
 

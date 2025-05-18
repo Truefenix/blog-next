@@ -7,4 +7,3 @@ export default async function Home() {
 
     return <HomePage posts={posts} />;
 }
-

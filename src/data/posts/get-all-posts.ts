@@ -3,11 +3,14 @@ import { PostData, PostsArraySchema } from "../../domain/posts/post";
 import { fetchJson } from "@/utils/fetch-json";
 
 export const getAllPosts = async (query = ''): Promise<PostData[]> => {
-    const url = `${POSTS_URL}?${query}`;
+    const url = query ? `${POSTS_URL}?${query}` : POSTS_URL;
+
     const jsonData = await fetchJson<PostData[]>(url);
-    const posts = PostsArraySchema.parse(jsonData); // Valida e tipa com o zod
+
+    const posts = PostsArraySchema.parse(jsonData); // Validação com Zod
     return posts;
 };
+
 
 /* versão antiga
 
