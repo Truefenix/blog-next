@@ -2,6 +2,7 @@ import { getPost } from "@/data/posts/get-post";
 import { getAllPosts } from "@/data/posts/get-all-posts";
 import { countAllPosts } from "@/data/posts/count-all-posts";
 import { notFound } from "next/navigation";
+import { Post } from "@/containers/Post";
 
 interface PostPageProps {
     params: {
@@ -17,13 +18,7 @@ export default async function PostPage({ params }: PostPageProps) {
         return notFound();
     }
 
-    return (
-        <>
-            <h1>{post.title}</h1>
-            <p>{post.content} e {post.author.name}</p>
-
-        </>
-    );
+    return (<Post post={post} />);
 }
 
 // mapeia o post e gera o post.slug
