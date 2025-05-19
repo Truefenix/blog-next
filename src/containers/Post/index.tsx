@@ -1,5 +1,6 @@
 'use client';
 
+import GiscusComments from "@/Comments";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Heading } from "@/components/Heading";
@@ -27,6 +28,7 @@ export const Post = ({ post }: PostProps) => {
                 />
                 < div > {post.content} </div>
             </MainContainer>
+            <GiscusComments />
             <Footer />
         </>
     );

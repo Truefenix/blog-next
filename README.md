@@ -17,6 +17,7 @@ Este é um projeto de blog desenvolvido com **Next.js**, utilizando **Styled Com
 - [Styled Components](https://styled-components.com/)
 - [zod](https://zod.dev/?id=requirements)
 - [remark](https://www.npmjs.com/package/remark)
+- [Giscus](https://giscus.app/pt)
 
 ## 🚀 Como rodar o projeto localmente
 

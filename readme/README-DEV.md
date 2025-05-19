@@ -87,6 +87,38 @@ npm install --save-dev ts-node
 
 ---
 
+# Giscus
+
+#### 🔧 1. Ative o GitHub Discussions no seu repositório, Vá até o seu repositório:
+
+ - Clique em Settings > Features.
+ - Marque a opção Discussions.
+
+#### 🔧 2. Configure o Giscus no site oficial
+
+ - Acesse: https://giscus.app
+
+ - Preencha os campos:
+```bash
+    Repository: seu-usuario/seu-repositorio
+
+    Category: selecione ou crie uma (ex: Comentários)
+
+    Mapping: pathname (recomendado para blogs)
+
+    Reaction, Metadata, etc.: marque como preferir
+
+    Theme: preferred_color_scheme
+
+Copie o código gerado no final da página (ele já vem com repoId, categoryId e tudo pronto).
+```
+
+```bash
+npm install @giscus/react
+```
+
+---
+
 # Scripts úteis
 
 ```bash
