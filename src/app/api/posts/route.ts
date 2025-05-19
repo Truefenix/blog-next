@@ -63,7 +63,7 @@ export async function GET() {
                 "formats": {
                     "thumbnail": {
                         "ext": ".png",
-                        "url": "/assets/machado1.png", // troque aqui para o caminho real da imagem
+                        "url": "/assets/bannerTruefenix.png", // troque aqui para o caminho real da imagem
                         "hash": "thumbhash",
                         "mime": "image/png",
                         "name": "image01_thumbnail.png",
@@ -93,7 +93,7 @@ export async function GET() {
                     },
                     "medium": {
                         "ext": ".png",
-                        "url": "/assets/image01_medium.png",
+                        "url": "/assets/machado1.png", // troque aqui para o caminho real da imagem
                         "hash": "mediumhash",
                         "mime": "image/png",
                         "name": "image01_medium.png",
@@ -108,7 +108,7 @@ export async function GET() {
                     },
                     "large": {
                         "ext": ".png",
-                        "url": "/assets/image01_large.png",
+                        "url": "/assets/machado1.png", // troque aqui para o caminho real da imagem
                         "hash": "largehash",
                         "mime": "image/png",
                         "name": "image01_large.png",
