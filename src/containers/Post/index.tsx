@@ -1,6 +1,6 @@
 'use client';
 
-import GiscusComments from "@/Comments";
+import GiscusComments from "@/components/Comments";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Heading } from "@/components/Heading";
