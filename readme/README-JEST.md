@@ -1,112 +1,100 @@
-# Projeto Next.js com TypeScript e Testes Jest
+# 🧪 Testes com Jest + React + TypeScript + Styled Components
 
-Este projeto usa Next.js 15.3.2 com TypeScript e está configurado para executar testes unitários com Jest e React Testing Library.
+Este projeto demonstra como configurar um ambiente de testes usando **Jest**, **React Testing Library**, **TypeScript** e **Styled Components**.
 
 ---
 
-## Dependências necessárias
+## ✅ Pré-requisitos
 
-Instale as dependências para testes, Babel e suporte TS:
+Certifique-se de já ter um projeto React com TypeScript criado. Exemplo com Next.js:
 
 ```bash
-npm install --save-dev \
-jest @types/jest ts-jest \
-@testing-library/react @testing-library/jest-dom \
-jest-environment-jsdom \
-babel-jest @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript
+npx create-next-app@latest my-app --typescript
+cd my-app
 ````
 
 ---
 
-## Configurações do projeto
+## 📦 Instalação dos pacotes
 
-### 1. `babel.config.js`
-
-Configuração do Babel para transpilar TS, JSX e código moderno:
-
-```js
-module.exports = {
-    presets: [
-        'next/babel',
-        '@babel/preset-env',
-        '@babel/preset-react',
-        '@babel/preset-typescript',
-    ],
-};
-```
-
-> O preset `next/babel` já inclui suporte para React e ESNext.
-
----
-
-### 2. `jest.config.ts`
-
-Configuração do Jest para usar ts-jest e ambiente jsdom:
-
-```js
-module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'jest-environment-jsdom',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest',
-  },
-  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
-  testMatch: ['**/*.spec.(ts|tsx)'],
-  moduleNameMapper: {
-    '\\.(css|less|sass|scss)$': 'identity-obj-proxy', // para importar estilos no teste (opcional)
-  },
-};
-```
-
----
-
-### 3. `package.json`
-
-Adicione o script para rodar os testes:
-
-```json
-{
-  "scripts": {
-    "test": "jest"
-  }
-}
-```
-
-# **jest-styled-components**
+Instale todos os pacotes necessários:
 
 ```bash
-npm install --save-dev jest-styled-components
-```
+npm install --save-dev jest ts-jest @types/jest jest-environment-jsdom @testing-library/react @testing-library/jest-dom jest-styled-components babel-jest @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/core @babel/plugin-transform-runtime @babel/runtime styled-components @types/styled-components
 
-Depois disso, só garantir que no seu `jest.config.ts` você inclua ele em `setupFilesAfterEnv` assim:
-
-```js
-setupFilesAfterEnv: [
-  '@testing-library/jest-dom/extend-expect',
-  'jest-styled-components'
-],
 ```
 
 ---
 
-## Uso
+## ⚙️ Configuração do Jest
 
-1. **Criar seus componentes React com TSX**, sempre importando o React:
+### 1. Crie o arquivo `jest.config.js` na raiz do projeto:
+
+```js
+module.exports = {
+  testEnvironment: 'jest-environment-jsdom',
+  transform: {
+    '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest',
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  setupFilesAfterEnv: [
+    '<rootDir>/jest.setup.ts',
+  ],
+  testPathIgnorePatterns: ['/node_modules/', '/.next/'],
+};
+```
+
+---
+
+### 2. Crie o arquivo `babel.config.js` na raiz:
+
+```js
+module.exports = {
+  presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+};
+```
+
+> Se você estiver usando **Next.js**, pode usar `presets: ['next/babel']` no lugar.
+
+---
+
+### 3. Crie o arquivo `jest.setup.ts` na raiz:
+
+```ts
+import '@testing-library/jest-dom';
+import 'jest-styled-components';
+```
+
+## 📝 Ajuste no `package.json`
+
+Antes de rodar os testes, adicione o script abaixo no seu `package.json`:
+
+```json
+"scripts": {
+  "test": "jest"
+}
+```
+---
+
+## 🧪 Exemplo de teste
+
+### `Hello.tsx`
 
 ```tsx
 import React from 'react';
 
-interface HelloProps {
+type HelloProps = {
   name: string;
-}
+};
 
 export default function Hello({ name }: HelloProps) {
   return <h1>Hello, {name}!</h1>;
 }
 ```
 
-2. **Criar testes com extensão `.spec.tsx`**, por exemplo `Hello.spec.tsx`:
+---
+
+### `Hello.spec.tsx`
 
 ```tsx
 import React from 'react';
@@ -121,7 +109,9 @@ describe('Hello component', () => {
 });
 ```
 
-3. **Rodar os testes:**
+---
+
+## ▶️ Executar os testes
 
 ```bash
 npm test
