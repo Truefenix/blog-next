@@ -32,16 +32,25 @@ npm install --save-dev jest ts-jest @types/jest jest-environment-jsdom @testing-
 
 ```js
 module.exports = {
-  testEnvironment: 'jest-environment-jsdom',
-  transform: {
-    '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest',
-  },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  setupFilesAfterEnv: [
-    '<rootDir>/jest.setup.ts',
-  ],
-  testPathIgnorePatterns: ['/node_modules/', '/.next/'],
+    collectCoverage: true, // Ativa a coleta de cobertura de testes
+    collectCoverageFrom: ['src/**/*.{ts,tsx}'], // Quais arquivos serão usados para a cobertura
+    coverageDirectory: 'coverage', // Pasta onde será salvo o relatório de cobertura
+
+    testEnvironment: 'jest-environment-jsdom', // Ambiente de simulação do navegador (ideal para React)
+    testMatch: [
+        '**/__tests__/**/*.[jt]s?(x)', // Testes na pasta __tests__ com .js, .ts, .jsx, .tsx
+        '**/?(*.)+(spec|test).[tj]s?(x)' // Arquivos com .spec ou .test (JS ou TS)
+    ],
+    testPathIgnorePatterns: ['/node_modules/', '/.next/', '/out/', '/public/'], // ignora
+
+    transform: {
+        '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest' // babel transforme esses arquivos
+    },
+    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts']
 };
+
 ```
 
 ---
@@ -50,8 +59,40 @@ module.exports = {
 
 ```js
 module.exports = {
-  presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+    // Presets usados para transformar o código
+    presets: [
+        '@babel/preset-env',      // Transpila JavaScript moderno para versões compatíveis com ambientes mais antigos
+        '@babel/preset-react',    // Habilita a transformação de JSX (React)
+        '@babel/preset-typescript'// Suporte a TypeScript
+    ],
+
+    // Plugins aplicados em todos os ambientes (exceto "test", que sobrescreve abaixo)
+    plugins: [
+        [
+            'styled-components',    // Plugin para melhorar a depuração e renderização do styled-components
+            {
+                ssr: true,            // Suporte para Server-Side Rendering (SSR)
+                displayName: true     // Adiciona nomes legíveis aos componentes nos DevTools
+            }
+        ]
+    ],
+
+    // Configurações específicas para o ambiente de testes
+    env: {
+        test: {
+            plugins: [
+                [
+                    'styled-components', // Reconfigura o plugin apenas para testes
+                    {
+                        ssr: false,         // SSR desativado nos testes para simplificar
+                        displayName: false  // Desativa nomes legíveis nos testes (melhora performance)
+                    }
+                ]
+            ]
+        }
+    }
 };
+
 ```
 
 > Se você estiver usando **Next.js**, pode usar `presets: ['next/babel']` no lugar.
