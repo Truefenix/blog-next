@@ -26,10 +26,12 @@ Configuração do Babel para transpilar TS, JSX e código moderno:
 
 ```js
 module.exports = {
-  presets: [
-    'next/babel', // usa o preset do Next.js
-    '@babel/preset-typescript', // suporte TS
-  ],
+    presets: [
+        'next/babel',
+        '@babel/preset-env',
+        '@babel/preset-react',
+        '@babel/preset-typescript',
+    ],
 };
 ```
 
@@ -71,6 +73,21 @@ Adicione o script para rodar os testes:
 }
 ```
 
+# **jest-styled-components**
+
+```bash
+npm install --save-dev jest-styled-components
+```
+
+Depois disso, só garantir que no seu `jest.config.ts` você inclua ele em `setupFilesAfterEnv` assim:
+
+```js
+setupFilesAfterEnv: [
+  '@testing-library/jest-dom/extend-expect',
+  'jest-styled-components'
+],
+```
+
 ---
 
 ## Uso
@@ -109,13 +126,5 @@ describe('Hello component', () => {
 ```bash
 npm test
 ```
-
----
-
-## Dicas
-
-* Certifique-se que todos os arquivos `.tsx` importem `React` para JSX funcionar.
-* Se usar CSS Modules ou arquivos estáticos, adicione `identity-obj-proxy` para mocks no Jest.
-* Teste componentes React usando React Testing Library para simular comportamento real.
 
 ---
