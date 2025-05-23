@@ -1,5 +1,6 @@
 'use clients';
 
+import React from 'react';
 import { Container } from "./style";
 
 export type HeadingProps = {

@@ -8,7 +8,8 @@
         "start": "next start",
         "lint": "next lint",
         "deploy:static": "next build && next export",
-        "test": "jest"
+        "test": "jest",
+        "test:watch": "jest --watch"
     },
     "dependencies": {
         "@giscus/react": "^3.1.0",

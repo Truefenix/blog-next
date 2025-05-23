@@ -1,19 +1,29 @@
 module.exports = {
-    collectCoverage: true, // Ativa a coleta de cobertura de testes
-    collectCoverageFrom: ['src/**/*.{ts,tsx}'], // Quais arquivos serão usados para a cobertura
-    coverageDirectory: 'coverage', // Pasta onde será salvo o relatório de cobertura
+    collectCoverage: true,
+    collectCoverageFrom: ['src/**/*.{ts,tsx}'],
+    coverageDirectory: 'coverage',
 
-    testEnvironment: 'jest-environment-jsdom', // Ambiente de simulação do navegador (ideal para React)
+    testEnvironment: 'jest-environment-jsdom',
     testMatch: [
-        '**/__tests__/**/*.[jt]s?(x)', // Testes na pasta __tests__ com .js, .ts, .jsx, .tsx
-        '**/?(*.)+(spec|test).[tj]s?(x)' // Arquivos com .spec ou .test (JS ou TS)
+        '**/__tests__/**/*.[jt]s?(x)',
+        '**/?(*.)+(spec|test).[tj]s?(x)'
     ],
-    testPathIgnorePatterns: ['/node_modules/', '/.next/', '/out/', '/public/'], // ignora
+    testPathIgnorePatterns: [
+        '/node_modules/',
+        '/.next/',
+        '/out/',
+        '/public/',
+        '/readme/'
+    ],
 
     transform: {
-        '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest' // babel transforme esses arquivos
+        '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest'
     },
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
 
-    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts']
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+
+    moduleNameMapper: {
+        '^@/(.*)$': '<rootDir>/src/$1'
+    }
 };
