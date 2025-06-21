@@ -2,11 +2,6 @@
 
 Este é um projeto de blog desenvolvido com **Next.js**, utilizando **Styled Components** para estilização e suporte a **SSG (Static Site Generation)** para otimização de performance.
 
-## 💻 Demonstração
-
-Confira abaixo uma prévia do funcionamento da aplicação:
-
-![Demonstração do Projeto](./public/assets/BlogFinal.gif)
 
 ## 🔍 Funcionalidades
 
